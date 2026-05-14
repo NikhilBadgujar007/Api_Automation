@@ -13,11 +13,17 @@ test.describe('Member Dashboard Functionality', () => {
     const body = await response.json();
     console.log(body.message);
     expect(body.message).toBe('Successfully fetched the agreement URL.');
+<<<<<<< HEAD
     expect(body.data.result.isAvailable).toBe(false);
   });
 
 
   test('Verify the dashboard functionality', async ({ services, member }) => {
+=======
+  });
+
+  test.only('Verify the dashboard functionality', async ({ services, member }) => {
+>>>>>>> 30e3574d7f10c790cfc66f12f5b5d7bb930cf4c5
     const memberId = member.memberId;
     console.log("Testing dashboard with member ID:", memberId, typeof memberId);
     const response = await services.memberService.getDashboardDetails(memberId);
@@ -25,6 +31,7 @@ test.describe('Member Dashboard Functionality', () => {
     const body = await response.json();
     console.log(body.message);
     expect(body.message).toBe('Successfully found the records to show on the Member dashboard.');
+<<<<<<< HEAD
 
     expect(body.data.result.id).toBe(memberId);
     expect(body.data.result.price).toBe(member.payload.price);
@@ -39,5 +46,7 @@ test.describe('Member Dashboard Functionality', () => {
     expect(payment).toHaveProperty("paymentStatus", "succeeded");
     expect(payment).toHaveProperty("amnt", 80);
     
+=======
+>>>>>>> 30e3574d7f10c790cfc66f12f5b5d7bb930cf4c5
   });
 });
