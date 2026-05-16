@@ -23,14 +23,14 @@ pipeline {
 
         stage('Run API Tests') {
             steps {
-                sh 'npx playwright test'
+                sh 'npx playwright test --reporter=html'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: '**/*.html', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
