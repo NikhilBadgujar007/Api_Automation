@@ -26,13 +26,21 @@ pipeline {
                 sh 'npx playwright test --reporter=html'
             }
         }
+
+        stage('Show Report Path') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'ls -la playwright-report'
+            }
+        }
     }
 
     post {
         always {
 
-            publishHTML(target: [
-                allowMissing: true,
+            publishHTML([
+                allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'playwright-report',
